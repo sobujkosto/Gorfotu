@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<title>Gorfotu Mobile App</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link href="stylee.css" rel="stylesheet">
+	</head>
+	<body>
+	<div id="header-img" onclick="refreshPage()">
+	<img src="1.png"></div>
+	<ul id="nav-bar">
+ <button class="collapsible click">
+	<table width="100%">
+	<tr>
+ <td colspan="3"><div class="head-name">গড়ফতু আমার প্রিয় গ্রাম - মোবাইল অ্যাপ</div></td>
+	<tr>
+	<td colspan="3"><div id="clockbox"></div> <span id="bongabdowithday"></span> <span id="hijriDate"></span></td>
+ </tr>
+ </table>
+ <span class="sunrise"></span>
+	<span class="sunset"></span>
+ </button>
+	
+ <div class="content" id="click">
+ <div class="gridThree">
+ <span class="sunrise"></span>
+ <span class="temp"></span>
+ <span class="sunset"></span>
+ <span class="min-temp"></span>
+ <span class="max-temp"></span>
+ <span class="humidity"></span>
+ <span class="status"></span>
+ <span class="description"></span>
+ <span class="chance-of-rain"></span>
+ <span class="pressure"></span>
+ <span class="visibility"></span>
+ <span class="wind-direction"></span>
+ <span class="cloudiness"></span>
+ <span class="district"></span>
+ 
+ <input list="districts" onchange="getWeatherForDistrict(this.value)" id="district" name="district" placeholder="জেলা নির্বাচন করুন">
+ 	<datalist id="districts">
+    <option value="Bagerhat">বাগেরহাট</option>
+    <option value="Bandarban">বান্দরবান</option>
+    <option value="Barguna">বরগুনা</option>
+    <option value="Barishal">বরিশাল</option>
+    <option value="Bhola">ভোলা</option>
+    <option value="Bogra">বগুড়া</option>
+    <option value="Brahmanbaria">ব্রাহ্মণবাড়িয়া</option>
+    <option value="Chandpur">চাঁদপুর</option>
+    <option value="Chapainawabganj">চাপাইনবাবগঞ্জ</option>
+    <option value="Chattogram">চট্টগ্রাম</option>
+    <option value="Chuadanga">চুয়াডাঙ্গা</option>
+    <option value="Coxs Bazar">কক্সবাজার</option>
+    <option value="Cumilla">কুমিল্লা</option>
+    <option value="Dhaka">ঢাকা</option>
+    <option value="Dinajpur">দিনাজপুর</option>
+    <option value="Faridpur">ফরিদপুর</option>
+    <option value="Feni">ফেনী</option>
+    <option value="Gaibandha">গাইবান্ধা</option>
+    <option value="Gazipur">গাজীপুর</option>
+    <option value="Gopalganj">গোপালগঞ্জ</option>
+    <option value="Habiganj">হবিগঞ্জ</option>
+    <option value="Jamalpur">জামালপুর</option>
+    <option value="Jashore">যশোর</option>
+    <option value="Jhalokati">ঝালকাঠি</option>
+    <option value="Jhenaidah">ঝিনাইদহ</option>
+    <option value="Joypurhat">জয়পুরহাট</option>
+    <option value="Khagrachari">খাগড়াছড়ি</option>
+    <option value="Khulna">খুলনা</option>
+    <option value="Kishoreganj">কিশোরগঞ্জ</option>
+    <option value="Kushtia">কুষ্টিয়া</option>
+    <option value="Madaripur">মাদারীপুর</option>
+    <option value="Magura">মাগুরা</option>
+    <option value="Manikganj">মানিকগঞ্জ</option>
+    <option value="Meherpur">মেহেরপুর</option>
+    <option value="Moulvibazar">মৌলভীবাজার</option>
+    <option value="Munshiganj">মুন্সীগঞ্জ</option>
+    <option value="Mymensingh">ময়মনসিংহ</option>
+    <option value="Naogaon">নওগাঁ</option>
+    <option value="Narail">নড়াইল</option>
+    <option value="Narayanganj">নারায়ণগঞ্জ</option>
+    <option value="Narsingdi">নরসিংদী</option>
+    <option value="Natore">নাটোর</option>
+    <option value="Nawabganj">নবাবগঞ্জ</option>
+    <option value="Netrokona">নেত্রকোনা</option>
+    <option value="Nilphamari">নীলফামারি</option>
+    <option value="Noakhali">নোয়াখালী</option>
+    <option value="Pabna">পাবনা</option>
+    <option value="Panchagarh">পঞ্চগড়</option>
+    <option value="Patuakhali">পটুয়াখালী</option>
+    <option value="Pirojpur">পিরোজপুর</option>
+    <option value="Rajbari">রাজবাড়ী</option>
+    <option value="Rajshahi">রাজশাহী</option>
+    <option value="Rangamati">রাঙ্গামাটি</option>
+    <option value="Rangpur">রংপুর</option>
+    <option value="Satkhira">সাতক্ষীরা</option>
+    <option value="Shariatpur">শরীয়তপুর</option>
+    <option value="Sherpur">শেরপুর</option>
+    <option value="Sirajganj">সিরাজগঞ্জ</option>
+    <option value="Sunamganj">সুনামগঞ্জ</option>
+    <option value="Sylhet">সিলেট</option>
+    <option value="Tangail">টাঙ্গাইল</option>
+    <option value="Thakurgaon">ঠাকুরগাঁও</option>
+    </datalist>
+    </div>
+    <h1 style="text-align:center; font-size:12px">গড়ফতু মোবাইল অ্যাপ - <span class="releseMonth"></span></h1>
+    </div>
+				
+				<button onclick="toggleSheet('topCenterButton')" class="topTwoCenterButton"><!--No Text--></button>
+				<div id="open-button" class="topRightButton" onclick="togglePanel()"><!--No Text--></div>
+    </ul>
+    
+    <div id="greeting"></div>
+    
+    <div id="themePopup" class="theme-popup" style="display: none;"><div class="popup-content"><span id="themeName"></span><span>আপনার পছন্দের সেটিংসে পরিবর্তন হয়েছে!</span></div>
+    </div>
+   
+  <div class="home_page_two">
+  <a href="1stpage/gram.html" class="shape">
+  <h3>গ্রাম পরিচিতি</h3>
+  <img src="image/gram.png" alt="ছবি">
+  <h6>পরিচিতি ও ইতিহাস</h6></a>
+  <a onclick="window.location.href='number.html'">
+  <h3>মোবাইল নাম্বার</h3>
+  <img src="image/mobile.png" alt="ছবি">
+  <h6>সব নাম্বার এখানে</h6></a>
+  
+  <a href="More/Daily Islam Lite/index.html">
+  <h3>ইসলামিক পর্ব</h3>
+  <img src="image/Islamic.png" alt="ছবি">
+  <h6>শিক্ষনীয় সবকিছু</h6></a>
+  <a href="other's.html" class="shape">
+  <h3>অন্যান্য পর্ব</h3>
+  <img src="image/other.png" alt="ছবি">
+  <h6>প্রয়োজনীয় সবকিছু</h6></a>
+  
+  <a href="jharbari/index.html" class="shape">
+  <h3>ঝাড়বাড়ী অ্যাপ</h3>
+  <img src="image/jb.png" alt="ছবি">
+  <h6>নতুন সংস্করণ</h6></a>
+  <a href="1stpage/death.html" class="shape">
+  <h3>মৃত্যুবার্ষিকী</h3>
+  <img src="image/death.png" alt="ছবি">
+  <h6>বর্তমান ও অতীত</h6></a>
+ 
+  <a href="1stpage/safollo.html" class="shape">
+  <h3>গ্রামের সাফল্য</h3>
+  <img src="image/success.png" alt="ছবি">
+  <h6>গ্রামে যা কিছু প্রথম</h6></a>
+  <a href="1stpage/social-media.html" class="shape">
+  <h3>ফেসবুক কানেক্ট</h3>
+  <img src="1stpage/personimage/fb.png" alt="ছবি">
+  <h6>গ্রুপের আইডি</h6></a>
+  
+  <a href="1stpage/rokto.html" class="shape">
+  <h3>রক্তের গ্রুপ</h3>
+  <img src="image/blood.png" alt="ছবি">
+  <h6>এলাকার রক্তের গ্রুপ</h6></a>
+  <a href="More/BanglaHealth/-indexrog.html" class="shape">
+  <h3>চিকিৎসা ব্যবস্থা</h3>
+  <img src="image/doctor.png" alt="ছবি">
+  <h6>ইন্সট্যান্ট চিকিৎসা</h6></a>
+  
+  <a href="More/Humayun/index.html">
+  <h3>উপন্যাস</h3>
+  <img src="image/book.png" alt="ছবি">
+  <h6>ভাললাগার গল্প</h6></a>
+  <a href="More/kobita/index.html" class="shape">
+  <h3>কবিতা</h3>
+  <img src="image/doctor.png" alt="ছবি">
+  <h6>প্রিয় কবিতা</h6></a>
+  
+  <a href="1stpage/aboutapp.html" class="shape">
+  <h3>এবাউট অ্যাপ</h3>
+  <img src="image/about.png" alt="ছবি">
+  <h6>সব তথ্য এখানে</h6></a>
+  <a href="information.html" class="shape">
+  <h3>আপডেট সম্পর্কে</h3>
+  <img src="image/update.png" alt="ছবি">
+  <h6>বিস্তারিত এখানে</h6></a>
+  </div>
+  
+  <div id="all" style="display:none;">
+  <div class="box">
+  <p><h5 style="background: var(--main-color);">নোটিফিকেশনটি একবারই শো করবে</h5>
+গড়ফতু মোবাইল অ্যাপটি শুধুমাত্র আমাদের গ্রামের মানুষদের উপকারার্থেই তৈরী করা হয়েছে। তাই, অ্যাপটি যত্রতত্র দেয়া থেকে বিরত থাকুন। অ্যাপে গ্রামভিত্তিক অনেক তথ্য আছে যা বহিরাগতদের দৃষ্টি গোচর হলে সমস্যার সৃষ্টি হতে পারে। অনাকাঙ্ক্ষিত কোন সমস্যার জন্য নিশ্চয়ই আপনি প্রস্তুত নন?
+<br><br>
+অ্যাপ বিষয়ক যে কোন মন্তব্য প্রকাশ করার জন্য আমাদের মেসেঞ্জার/ টেলিগ্রামের চ্যাটিং গ্রুপে এড হতে পারেন। অ্যাপের বিষয়ক ফিডব্যাক সাধারণত এই চ্যাটিং গ্রুপের মাধ্যমেই নিয়ে থাকি। অ্যাপের এবাউট পেজে অ্যাপ বিষয়ক সব ধরনের তথ্য এবং আপনার মূল্যবান মন্তব্য প্রকাশ করার অপশন পেয়ে যাবেন।<br><font color="green" size="1"><center>পপআপটি আবার দেখতে চাইলে কাস্টম কালার সেকশন থেকে পপআপ রিসেট করুন।</center></font></p>
+	<div class="grid-containerThree">
+	<a href="https://t.me/gorfotuapp"><button class="appTheme">টেলিগ্রাম গ্রুপ</button></a>
+	<a href="1stpage/00update.html"><button class="appTheme">নতুন কী কী?</button></a>
+	<button id="closeBtn" class="appTheme"><font color="red">Close</font></button>
+	</div>
+  </div>
+  </div>
+  
+  <div id="topCenterButton" class="top-sheet">
+	<div class="top-sheet-content">
+	<!--<h1>ইনফরমেশন সেকশন...</h1>-->
+	<div class="grid-containerTwo">
+    <a href="https://m.me/j/AbaB9VmTpCcfOEaA/" target="blank" class="appTheme">মেসেঞ্জার গ্রুপ</a>
+    <a href="https://www.facebook.com/groups/lovelyvillagegorfotu/" target="_blank" class="appTheme">ফেসবুক গ্রুপ</a>
+    <a href="https://t.me/gorfotuapp" target="blank" class="appTheme">টেলিগ্রাম গ্রুপ</a>
+    <a href="mailto: gorfotu@gmail.com" class="appTheme">ইমেইল</a>
+    <a href="https://gorfotu.wordpress.com" target="_blank" class="appTheme">ওয়েবসাইট</a>
+    <a href="1stpage/00update.html" target="আপডেট" class="appTheme">আপডেট চেকার</a>
+    </div>
+    <button class="closeCenterRight" onclick="toggleSheet('topCenterButton')">বন্ধ করুন</button>
+    <hr class="fullLine">
+    <hr class="fullLine">
+    </div>
+    </div>
+    
+    <div id="fontButton" class="top-sheet">
+    <div class="top-sheet-content">
+    <div class="grid-containerTwo">
+    <label for="font-upload" class="upload-label item1">ফন্ট আপলোড করুন</label>
+    <input type="file" id="font-upload" accept=".ttf, .otf">
+    <button id="reset-font" style="display: none;border-radius: 0 25px 25px 0">ফন্ট রিসেট করুন</button>
+    </div>
+    </div>
+    <div class="center">
+		<button onclick="toggleSheet('fontButton')"><h5>বন্ধ করুন</h5></button>
+		</div>
+		<hr class="fullLine">
+    </div>
+    </div>
+   
+		<div id="bottomLeftButton" class="bottom-sheet">
+		<div class="bottom-sheet-content">
+  <h1>নিজের ইচ্ছেমতো অ্যাপের থিম কাস্টমাইজ করুন</h1>
+  <details class="detailsHome">
+		<summary class="summary"><h5>কীভাবে কাস্টমাইজ করবেন জানতে ট্যাপ করুন</h5><hr class="fullLine"></summary>
+		<img src="image/colorTheme.jpeg" width="100%">
+		</details>
+		
+		<h5>অ্যাপ ব্যাকগ্রাউন্ড ও রিসেট</h5>
+		<div class="grid-containerTwo">
+		<label for="colorPickerForBg"><h5 class="item1">ব্যাকগ্রাউন্ড চেঞ্জ করুন</h5></label>
+		<input type="color" id="colorPickerForBg"><button onclick="resetBgColor()"><h5 class="item2" style="background:red">ব্যাকগ্রাউন্ড রিসেট করুন</h5></button>
+		</div>
+		<h5>হেডার ফুটার ব্যাকগ্রাউন্ড ও রিসেট</h5>
+		<div class="grid-containerTwo">
+		<label for="bgColorPicker"><h5 class="item1">ব্যাকগ্রাউন্ড চেঞ্জ করুন</h5></label><input type="color" id="bgColorPicker"><button id="resetButtonHeader"><h5 class="item2">ব্যাকগ্রাউন্ড রিসেট করুন</h5></button>
+		</div>
+		<h5>গ্রাম পরিচিতি ফন্ট কালার ও ব্যাকগ্রাউন্ড কালার</h5>
+		<div class="grid-containerTwo">
+		<label for="fontColorPicker_h3"><h5 class="item1">ফন্ট কালার</h5></label>
+    <input type="color" id="fontColorPicker_h3"><label for="bgColorPicker_h3"><h5 class="item2">ব্যাকগ্রাউন্ড চেঞ্জ করুন</h5></label>
+    </div>
+		<h5>পরিচিতি ও ইতিহাস ফন্ট ও ব্যাকগ্রাউন্ড কালার</h5>
+		<div class="grid-containerTwo">
+    <input type="color" id="bgColorPicker_h3"><label for="fontColorPicker_h6"><h5 class="item1">ফন্ট কালার চেঞ্জ করুন</h5></label><input type="color" id="fontColorPicker_h6">
+		<label for="bgColorPicker_h6"><h5 class="item2">ব্যাকগ্রাউন্ড চেঞ্জ করুন</h5></label>
+		</div>
+		<h5>শেপ ব্যাকগ্রাউন্ড কালার ও রিসেট</h5>
+		<div class="grid-containerTwo">
+    <input type="color" id="bgColorPicker_h6">
+		<label for="bgColorPickerShape"><h5 class="item1">ব্যাকগ্রাউন্ড চেঞ্জ করুন</h5></label>
+		<input type="color" id="bgColorPickerShape"><a id="resetButtonShape"><h5 class="item2">ব্যাকগ্রাউন্ড রিসেট করুন</h5></a>
+		</div>
+		<h5 style="background:red">রিসেট সেকসন</h5>
+		<table class="myTable">
+		<tr>
+		<td width="33%"><a id="resetButtonFont"><h5 class="item1">হেডার-ফুটার ছাড়া</h5></a></td>
+		<td width="34%"><a id="resetBtn"><h5 style="border-radius: 3px">পপআপ রিসেট</h5></a></td>
+		<td width="33%"><a id="resetButtonAll"><h5 class="item2">সব কালার রিসেট</h5></a></td>
+		</tr>
+		</table>
+		<div class="grid-containerTwo">
+		<a onclick="toggleTheme()"><h5 class="item1">থিম চেঞ্জ করুন</h5></a>
+		<button onclick="toggleSheet('bottomLeftButton')"><h5 class="item2">বন্ধ করুন</h5></button>
+		</div>
+  </div>
+		</div>
+		
+  <div id="bottomRButton" class="bottom-sheet">
+		<div class="bottom-sheet-content">
+		<h1>গড়ফতু মোবাইল অ্যাপ - <span class="releseMonth"></span></h1>
+		<div style="font-size: 11px;text-align:center">ডিভাইস মডেল•<!--Device Model ☞--><b><span2 class="apiInfo"></span2></b>&nbsp; <!--Device Version ☞--><span3 class="version"></span3><br>ডিভাইস <!--Device Battery ☞--> <span2 class="battery"></span2></br>ডিভাইস স্ক্রিন রেজুলেশন = <!--Device Reesulation For Screen Height Width ☞--><span2 class="resulation"></span2><br><!--Device Online Status ☞--><span2 class="netCheck"></span2><br><!--App Relese Date Full ☞--><span2 class="releseDateFull"></span2><br><span2>গড়ফতু মোবাইল অ্যাপ 2013 - <script> document.write(new Date().getFullYear()) </script></span2>
+</div>
+  <button class="closeCenterRight" onclick="toggleSheet('bottomRButton')">বন্ধ করুন</button>
+  <hr class="fullLine">
+  </div>
+  </div>
+  
+		<div id="bottomLButton" class="bottom-sheet">
+		<div class="bottom-sheet-content">
+		<h1>সবগুলো জেলার বর্তমান তাপমাত্রা</h1>
+		<object data="More/extra/weatherBD.html" width="100%" height="490px"></object>
+		<a href="More/extra/weather.html"><h6>যে কোন জায়গার আবহাওয়ার খবর জানতে এখানে ট্যাপ করুন</h6></a>
+	 </div>
+  <div class="center">
+  <button onclick="toggleSheet('bottomLButton')"><h5>বন্ধ করুন</h5></button>
+   </div>
+   </div>
+
+		<div id="bottomRightButton" class="bottom-sheet">
+		<div class="top-sheet-content">
+  <h1>অ্যাপের বিষয়ে জরুরি কিছু তথ্য...</h1>
+  <center>
+  <details class="detailsHome">
+		<summary class="summary" style="width:90%"><h5>অ্যাপটি কীভাবে ডাউনলোড দেবেন?</h5></summary>
+  <p>অ্যাপটি আপডেট দিতে সবসময় উল্লেখিত লিংকগুলো ফলো করুন। এখানে আপডেট সহজে দেয়ার জন্য সর্বোচ্চ সহজ উপায় গুলো রাখা হয়েছে। যেহেতু আমাদের অ্যাপটি প্লে স্টোরে পাওয়া যাবে না তাই আপডেট দেয়ার জন্য এই পদ্ধতিই অবলম্বন করতে হবে। নোটিশের পাশে <a href="information.html"><font color="var(--main-color)">(ইনফরমেশন)</font></a> সেকশন ট্যাপ করলে আপডেট দেয়ার জন্য প্রয়োজনীয় তথ্য পেয়ে যাবেন। অথবা, নিচের ইনফরমেশন সেকশন দেখতে পারেন।</p>
+  </details>
+  <details class="detailsHome">
+		<summary class="summary" style="width:80%"><h5>ইনফরমেশন সেকশন...</h5></summary>
+		<table class="radiusTable">
+  <tr>
+  <td width="50%"><a href="https://m.me/j/AbaB9VmTpCcfOEaA/" target="blank"><h5>মেসেঞ্জার গ্রুপ</h5></a></td>
+  <td><a href="https://www.facebook.com/groups/lovelyvillagegorfotu/" target="_blank"><h5>ফেসবুক গ্রুপ</h5></a></td>
+  <tr>
+  <td><a href="https://t.me/gorfotuapp" target="blank"><h5>টেলিগ্রাম গ্রুপ</h5></a></td>
+  <td><a href="mailto: gorfotu@gmail.com"><h5>ইমেইল</h5></a></td>
+  <tr>
+  <td><a href="https://gorfotu.wordpress.com" target="_blank"><h5>ওয়েবসাইট</h5></a></td>
+  <td><a href="1stpage/00update.html" target="আপডেট"><h5>আপডেট চেকার</h5></a></td>
+  </tr>
+  </table>
+  </details>
+		<details class="detailsHome">
+		<summary class="summary" style="width:70%"><h5>আরো কিছু তথ্য...</h5></summary>
+  <p>অ্যাপের বিষয়ে আপ টু ডেট থাকার জন্য আমাদের মেসেঞ্জার গ্রুপে জয়েন করতে পারেন। সেখানে অ্যাপের বিষয়ে ফিডব্যাকও দিতে পারেন। ব্রাউজার দিয়ে অ্যাপটি ডাউনলোড দিতে <a onclick="copyLink('https://icedrive.net/s/PvTzfgbFzA7S1Nw2jRj49AjvQFFv')"><font color="#0000FF">(এখানে ট্যাপ করলেই)</font></a> ডাউনলোড লিংক কপি হবে। তারপর পপআপে দেখানো নিয়ম অনুয়ায়ী গুগল ক্রোম ব্রাউজারে <img src="image/chrome.png" width="15px"> লিংকটি পেস্ট করুন। পপআপে দেখানো নিয়ম ফলো করুন। অথবা আমাদের টেলিগ্রাম গ্রুপ থেকে সবচেয়ে সহজ পদ্ধতিতে অ্যাপটি ডাউনলোড করুন। <a href="https://t.me/gorfotuapp"><font color="#00bb00">(এখানে ট্যাপ করলেই) </font></a>আমাদের টেলিগ্রাম গ্রুপে জয়েন করা যাবে। এ জন্য অবশ্যই আপনার ফোনে টেলিগ্রাম অ্যাপ লগিন করা থাকতে হবে। আপনার ফোনে টেলিগ্রাম অ্যাপ না থাকলে <a href="https://play.google.com/store/apps/details?id=org.telegram.messenger"><font color="darkgreen">(এখানে ট্যাপ করে - টেলিগ্রাম)</font></a> অথবা <a href="https://play.google.com/store/apps/details?id=org.telegram.plus"><font color="seagreen">(এখানে ট্যাপ করে - টেলিগ্রাম প্লাস) </font></a> ইন্সটল দিন। আমাদের মেসেঞ্জার গ্রুপে জয়েন করতে এখানে ট্যাপ করে <a onclick="copyText()"><font color="darkteal">গ্রুপের নাম কপি</font></a> করে মেসেঞ্জারে গিয়ে সার্চ করুন।</p>
+  <a href="https://t.me/gorfotuapp"><h4>আমাদের টেলিগ্রাম গ্রুপ - ট্যাপ করুন</h5></a>
+  <table class="radiusTable">
+  <tr>
+  <td width="50%"><a href="https://play.google.com/store/apps/details?id=org.telegram.messenger"><h5>টেলিগ্রাম ডাউনলোড</h5></a></td>
+  <td><a href="https://play.google.com/store/apps/details?id=org.telegram.plus"><h5>টেলিগ্রাম প্লাস ডাউনলোড</h5></a></td>
+  </tr>
+  </table>
+  </details>
+  </center>
+  <div class="center">
+  <button onclick="toggleSheet('bottomRightButton')"><h5>বন্ধ করুন</h5></button>
+  </div>
+  </div>
+		</div>
+		
+		<!--Theme Sections-->
+		<div id="bottomThemeButton" class="bottom-sheet">
+		<div class="bottom-sheet-content">
+		<h1>অ্যাপের থিম চেঞ্জ করার অপশন...</h1>
+		<div class="grid-containerTwo">
+		<a onclick="toggleSheet('bottomLeftButton')"><h5 class="item1">কাস্টম থিম</h5></a>
+		<a onclick="changeToRandomColor()"><h5 class="item2">মাল্টি কালার</h5></a>
+		<a onclick="toggleTheme()"><h5 class="item1">শুধু থিম</h5></a>
+  <label for="colorPickerTheme"><h5 class="item2">পছন্দের কালার দিন</h5></label><input type="color" id="colorPickerTheme">
+		<button onclick="toggleSheet('fontButton')"><h5 class="item1">ফন্ট চেঞ্জ করুন</h5></button>
+		<button onclick="toggleSheet('bottomThemeButton')" class="itemOff"><h5 class="item2">বন্ধ করুন</h5></button>
+		</div>
+   </div>
+   </div>
+		
+		<div style="margin-top:55px">
+		<div class="fixed-footer">
+		<div class="bottomTwoButton">
+		<button onclick="toggleSheet('bottomRButton')" class="bottomRButton"><!--No Text--></button>
+		<button onclick="toggleSheet('bottomLButton')" class="bottomLButton"><!--No Text--></button>
+		</div>
+	
+		<div class="floatingBar">
+  <div class="floating-btn-container floating-btn-container-right">
+  <button onclick="toggleSheet('bottomRightButton')" class="floating-btn"><img src="image/info.png" width="48px"></button>
+  </div>
+
+  <div class="floating-btn-container floating-btn-container-left">
+  <button onclick="toggleSheet('bottomThemeButton')" class="floating-btn"><img src="image/nth.png" width="48px"></button>
+    </div>
+    </div>
+		
+		<button class="collapsible bottom" id="footer-menu"><p style="font-size:13px;text-align:center">ফোনের ইনফরমেশন জানতে এখানে ট্যাপ করুন</p>
+		<div class="appVersion"></div>
+		<div class="sponsor"><h6 id="sponsor"><span5></span5></h6></div></button><div class="content">
+		<div class="left"><a href="https://t.me/gorfotuapp"><img src="image/telegram.png"/></a></div>
+		<div class="right"><a href="https://m.me/j/AbaB9VmTpCcfOEaA/"><img src="1stpage/personimage/fbsms.png"/></a></div>
+<div style="font-size: 11px;text-align:center">ডিভাইস মডেল•<!--Device Model ☞--><b><span2 class="apiInfo"></span2></b>&nbsp;<br> <!--Device Version ☞--><span2 class="version"></span2><br>ডিভাইস <!--Device Battery ☞--> <span2 class="battery"></span2></br>ডিভাইস স্ক্রিন রেজুলেশন = <!--Device Reesulation For Screen Height Width ☞--><span2 class="resulation"></span2><br><!--Device Online Status ☞--><span2 class="netCheck"></span2><br><!--App Relese Date Full ☞--><span2 class="releseDateFull"></span2><br><span2>গড়ফতু মোবাইল অ্যাপ 2013 - <script> document.write(new Date().getFullYear()) </script></span2><!--Temperature For Dinajpur Jila ☞--><p><a href="More/extra/weather.html">যে কোন জায়গার আবহাওয়ার খবর জানতে এখানে ট্যাপ করুন</a></p><object data="More/extra/weatherBD.html" width="100%" height="70"></object>
+</div>
+	<div class="kosto" id="kosto"><a href="information.html"><h2 class="comment"></h2></a>
+	</div>
+	</div>
+    </div>
+    
+    <script src="css-js-file/allShortScript.js"></script><script src="css-js-file/allScript.js"></script><script src="css-js-file/bangla.js"></script><script src="css-js-file/bongabdowithday.js"></script><script src="css-js-file/bongabdoHome.js"></script><script src="css-js-file/theme.js"></script><script src="css-js-file/custom-theme.js"></script><script src="css-js-file/side-float.js"></script><script src="css-js-file/fontChange.js"></script>
+</body>
+</html>
